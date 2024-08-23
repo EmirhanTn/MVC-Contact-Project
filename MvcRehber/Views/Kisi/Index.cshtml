@@ -1,0 +1,52 @@
+﻿@model MvcRehber.Models.KisiModel.KisiIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<br />
+@Html.ActionLink("Yeni Kişi", "Ekle", null, new { @class = "btn btn-primary" })
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>İsim</th>
+        <th>Soyisim</th>
+
+        <th>Telefon (Kisisel)</th>
+
+        <th>E-mail Adresi</th>
+
+        <th>Şehir</th>
+        <th>İşlemler</th>
+        <th> </th>
+    </tr>
+
+    @foreach (var kisi in Model.Kisiler)
+    {
+        <tr>
+
+            <td>@kisi.Ad</td>
+            <td>@kisi.Soyad</td>
+
+            <td>@kisi.CepTelefon</td>
+
+            <td>@kisi.EmailAdres</td>
+
+            <td>@kisi.Sehir.SehirAdi</td>
+            <td>
+
+                @Html.ActionLink("Güncelle", "Guncelle", new { id = kisi.Id }, new { @class = "btn btn-secondary", style = "font-size: 9px" })
+                @Html.ActionLink("Sil", "Sil", new { id = kisi.Id }, new { onclick = "return confirm('Kişi kalıcı olarak silinecek. Onaylıyor musunuz?')", @class = "btn btn-danger", style = "font-size: 9px" })
+                @Html.ActionLink("Detay", "Detay", new { id = kisi.Id },new{ @class = "btn btn-dark", style = "font-size: 9px" })
+
+            </td>
+           
+        </tr>
+    }
+
+</table>

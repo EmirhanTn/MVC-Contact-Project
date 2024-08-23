@@ -1,0 +1,48 @@
+﻿@model MvcRehber.Models.KisiModel.KisiEkleViewModel
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ekle</h2>
+
+<form class="form-horizontal" method="post" action="/Kisi/Ekle/">
+    <div class="form-group">
+
+        @Html.LabelFor(x => x.Kisi.Ad)
+        @Html.TextBoxFor(x => x.Kisi.Ad, null, new { @class = "form-control", required = "" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.Soyad)
+        @Html.TextBoxFor(x => x.Kisi.Soyad, null, new { @class = "form-control", required = "" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.EvTelefon)
+        @Html.TextBoxFor(x => x.Kisi.EvTelefon, null, new { @class = "form-control", @type = "number", size = "10" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.CepTelefon)
+        @Html.TextBoxFor(x => x.Kisi.CepTelefon, null, new { @class = "form-control", required = "", @type = "number" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.IsTelefon)
+        @Html.TextBoxFor(x => x.Kisi.IsTelefon, null, new { @class = "form-control", @type = "number" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.EmailAdres)
+        @Html.TextBoxFor(x => x.Kisi.EmailAdres, null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.Adres)
+        @Html.TextBoxFor(x => x.Kisi.Adres, null, new { @class = "form-control", @rows = 4 })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kisi.SehirId)
+        @Html.DropDownListFor(x => x.Kisi.SehirId, new SelectList(Model.Sehirler, "Id", "SehirAdi"), new { @class = "form-control", required = "" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Kaydet" />
+    </div>
+</form>
